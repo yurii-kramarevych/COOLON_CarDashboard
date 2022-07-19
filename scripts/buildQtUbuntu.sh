@@ -3,7 +3,7 @@
 # Automated build process for ubuntu 
 # This is not suitable for cross development activity
 
-echo "----- Qt Build script for Raspberry pi ------"
+echo "----- Qt Build script for Ubuntu 22 04 ------"
 
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root (sudo bash) " 
