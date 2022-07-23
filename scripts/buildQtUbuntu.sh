@@ -67,6 +67,13 @@ else
 	wget $qtbase
 fi
 
+if [ $? -eq 0 ]; then
+    echo OK
+else
+    echo "Desired $qtbase is not found"
+    exit 1
+fi
+
 qtdeclarativeFile="qtdeclarative-everywhere-$openSource-src-$concVersion"
 qtdeclarativeDir="qtdeclarative-everywhere-src-$concVersion"
 
@@ -81,6 +88,12 @@ else
 	wget $qtdeclarative
 fi
 
+if [ $? -eq 0 ]; then
+    echo OK
+else
+    echo "Desired $qtdeclarative is not found"
+    exit 1
+fi
 
 qtquickcontrolsFile="qtquickcontrols-everywhere-$openSource-src-$concVersion"
 qtquickcontrolsDir="qtquickcontrols-everywhere-src-$concVersion"
@@ -94,6 +107,13 @@ if [ -f "$HOME/$qtquickcontrolsXZ" ]; then
 else 
     echo "$qtquickcontrolsXZ does not exist."
 	wget $qtquickcontrols
+fi
+
+if [ $? -eq 0 ]; then
+    echo OK
+else
+    echo "Desired $qtquickcontrols is not found"
+    exit 1
 fi
 
 qtquickcontrols2File="qtquickcontrols2-everywhere-$openSource-src-$concVersion"
@@ -124,6 +144,12 @@ else
 	wget $qtmultimedia
 fi
 
+if [ $? -eq 0 ]; then
+    echo OK
+else
+    echo "Desired $qtmultimedia is not found"
+    exit 1
+fi
 
 qtsvgFile="qtsvg-everywhere-$openSource-src-$concVersion"
 qtsvgDir="qtsvg-everywhere-src-$concVersion"
@@ -137,6 +163,13 @@ if [ -f "$HOME/$qtsvgXZ" ]; then
 else 
     echo "$qtsvgXZ does not exist."
 	wget $qtsvg
+fi
+
+if [ $? -eq 0 ]; then
+    echo OK
+else
+    echo "Desired $qtsvg is not found"
+    exit 1
 fi
 
 qtvirtualkeyboardFile="qtvirtualkeyboard-everywhere-$openSource-src-$concVersion"
@@ -153,6 +186,12 @@ else
 	wget $qtvirtualkeyboard
 fi
 
+if [ $? -eq 0 ]; then
+    echo OK
+else
+    echo "Desired $qtvirtualkeyboard is not found"
+    exit 1
+fi
 
 qtgraphicaleffectsFile="qtgraphicaleffects-everywhere-$openSource-src-$concVersion"
 qtgraphicaleffectsDir="qtgraphicaleffects-everywhere-src-$concVersion"
@@ -166,6 +205,13 @@ if [ -f "$HOME/$qtgraphicaleffectsXZ" ]; then
 else 
     echo "$qtgraphicaleffectsXZ does not exist."
 	wget $qtgraphicaleffects
+fi
+
+if [ $? -eq 0 ]; then
+    echo OK
+else
+    echo "Desired $qtgraphicaleffects is not found"
+    exit 1
 fi
 
 qtwebsocketsFile="qtwebsockets-everywhere-$openSource-src-$concVersion"
@@ -182,6 +228,13 @@ else
 	wget $qtwebsockets
 fi
 
+if [ $? -eq 0 ]; then
+    echo OK
+else
+    echo "Desired $qtwebsockets is not found"
+    exit 1
+fi
+
 qtwebglpluginFile="qtwebglplugin-everywhere-$openSource-src-$concVersion"
 qtwebglpluginDir="qtwebglplugin-everywhere-src-$concVersion"
 
@@ -194,6 +247,13 @@ if [ -f "$HOME/$qtwebglpluginXZ" ]; then
 else 
     echo "$qtwebglpluginXZ does not exist."
 	wget $qtwebglplugin
+fi
+
+if [ $? -eq 0 ]; then
+    echo OK
+else
+    echo "Desired $qtwebglplugin is not found"
+    exit 1
 fi
 
 echo "Modules are installed built each one "
@@ -266,21 +326,71 @@ make -j8 |& tee -a $OUTPUT_FILE
 make install
 cd ..
 
-#tar xf $HOME/$qtwebsocketsXZ
-#cd $HOME/$qtwebsocketsDir
-#/usr/local/QtUbuntu/bin/qmake
-#make -j8
-#make install
-#cd ..
+tar xf $HOME/$qtwebsocketsXZ
+cd $HOME/$qtwebsocketsDir
+/usr/local/QtUbuntu/bin/qmake
+make -j8
+make install
+cd ..
 
-#tar xf $HOME/$qtwebglpluginXZ
-#cd $HOME/$qtwebglpluginDir
-#/usr/local/QtUbuntu/bin/qmake
-#make -j8
-#make install
-#cd ..
+tar xf $HOME/$qtwebglpluginXZ
+cd $HOME/$qtwebglpluginDir
+/usr/local/QtUbuntu/bin/qmake
+make -j8
+make install
+cd ..
+
+
+if [ -f "$HOME/$qtbaseXZ" ]; then
+    rm -rf $HOME/$qtbaseXZ
+    rm -rf $HOME/$qtbaseDir
+fi
+
+if [ -f "$HOME/$qtdeclarativeXZ" ]; then
+    rm -rf $HOME/$qtdeclarativeXZ
+    rm -rf $HOME/$qtdeclarativeDir
+fi
+
+if [ -f "$HOME/$qtquickcontrolsXZ" ]; then
+    rm -rf $HOME/$qtquickcontrolsXZ
+    rm -rf $HOME/$qtquickcontrolsDir
+fi
+
+if [ -f "$HOME/$qtquickcontrols2XZ" ]; then
+    rm -rf $HOME/$qtquickcontrols2XZ
+    rm -rf $HOME/$qtquickcontrols2Dir
+fi
+
+if [ -f "$HOME/$qtmultimediaXZ" ]; then
+    rm -rf $HOME/$qtmultimediaXZ
+    rm -rf $HOME/$qtmultimediaDir
+fi
+
+if [ -f "$HOME/$qtsvgXZ" ]; then
+    rm -rf $HOME/$qtsvgXZ
+    rm -rf $HOME/$qtsvgDir
+fi
+
+if [ -f "$HOME/$qtvirtualkeyboardXZ" ]; then
+    rm -rf $HOME/$qtvirtualkeyboardXZ
+    rm -rf $HOME/$qtvirtualkeyboardDir
+fi
+
+if [ -f "$HOME/$qtgraphicaleffectsXZ" ]; then
+    rm -rf $HOME/$qtgraphicaleffectsXZ
+    rm -rf $HOME/$qtgraphicaleffectsDir
+fi
+
+if [ -f "$HOME/$qtwebsocketsXZ" ]; then
+    rm -rf $HOME/$qtwebsocketsXZ
+    rm -rf $HOME/$qtwebsocketsDir
+fi
+
+if [ -f "$HOME/$qtwebglpluginXZ" ]; then
+    rm -rf $HOME/$qtwebglpluginXZ
+    rm -rf $HOME/$qtwebglpluginDir
+fi
 
 echo 'All Done!'
 
 cd ~
-
