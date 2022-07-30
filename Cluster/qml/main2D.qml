@@ -53,6 +53,8 @@ import QtQuick.Controls 2.1
 import "./2D"
 
 import SPEED 1.0
+import RPM 1.0
+import SIGNAL 1.0
 
 Item {
     id: mainview
@@ -109,6 +111,10 @@ Item {
         scale: mainview.width / 2560
         anchors.centerIn: mainview
         z: topZ
+//        leftTurnSignalSource : true ? "qrc:/icons/icon_turnsignal_on.png"
+//                                                    : "qrc:/icons/icon_turnsignal_off.png";
+//        rightTurnSignalSource : false ? "qrc:/icons/icon_turnsignal_on.png"
+//                                          : "qrc:/icons/icon_turnsignal_off.png";
 
         Image {
             id: topLineImg
@@ -128,6 +134,24 @@ Item {
         }
     }
 
+    RPM
+    {
+        id: rpmVal
+        onRpmValueChanged: {
+            gauges.tachoText = rpmValue.toFixed(1);
+
+            if(rpmValue >= 0 && rpmValue < 4.2)
+            {
+                gauges.tachoNeedle.tachoNeedle.rotation = (1360/42) * rpmValue - 136;
+            }
+            else if(rpmValue >= 4.2 && rpmValue < 7.0)
+            {
+                gauges.tachoNeedle.tachoNeedle.rotation = (100 / 3.2) * rpmValue - (4200/32);
+            }
+
+        }
+    }
+
     SPEED{
         id: speedVal
         onSpeedValueChanged: {
@@ -142,6 +166,24 @@ Item {
                 gauges.speedNeedle.speedNeedle.rotation = (100 / 115) * speedValue - 126;
             }
        }
+    }
+
+    SIGNAL
+    {
+        id: signal
+        onRightSigChanged:
+        {
+            indicatorPane.leftTurnSignalSource =  leftSig ? "qrc:/icons/icon_turnsignal_on.png"
+                                                        : "qrc:/icons/icon_turnsignal_off.png";
+
+        }
+
+        onLeftSigChanged:
+        {
+            indicatorPane.rightTurnSignalSource = rightSig ? "qrc:/icons/icon_turnsignal_on.png"
+                                              : "qrc:/icons/icon_turnsignal_off.png";
+
+        }
     }
 
     Gauges {
@@ -216,10 +258,11 @@ Item {
         }
         onRpmChanged: {
             var rpmVal = (Math.round(rpm / 100) * 100) / 1000;
-            gauges.tachoText = rpmVal.toFixed(1);
+
+            //gauges.tachoText = rpmVal.toFixed(1);
         }
         onTachoAngleChanged: {
-            gauges.tachoNeedle.tachoNeedle.rotation = tachoAngle;
+            // gauges.tachoNeedle.tachoNeedle.rotation = tachoAngle;
         }
     }
 

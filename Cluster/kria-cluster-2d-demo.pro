@@ -1,12 +1,14 @@
 TEMPLATE = app
 
-QT += qml quick
+QT += qml quick gui
 
 target.path = $$[QT_INSTALL_EXAMPLES]/studio3d/$$TARGET
 INSTALLS += target
 
 SOURCES += main.cpp \
     fps.cpp \
+    rpm.cpp \
+    signal.cpp \
     speed.cpp
 
 CONFIG += resources_big
@@ -38,4 +40,6 @@ ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 HEADERS += \
     fps.h \
+    rpm.h \
+    signal.h \
     speed.h

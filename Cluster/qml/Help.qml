@@ -63,7 +63,7 @@ Item {
             id: helpText
             width: parent.width
             anchors.centerIn: parent
-            text: "Copyright (C) 2017 The Qt Company Ltd."
+            text: "COOLON MOTOR"
             color: "#ffffff"
             anchors.horizontalCenterOffset: 0
             wrapMode: Text.WordWrap

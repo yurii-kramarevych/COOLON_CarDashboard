@@ -95,10 +95,10 @@ OverlayContainerForm {
             signalTimer.stop();
         var turnLeft = (turnSignal & Qt.LeftArrow);
         var turnRight = (turnSignal & Qt.RightArrow);
-        leftTurnSignalSource = turnLeft ? "qrc:/icons/icon_turnsignal_on.png"
-                                        : "qrc:/icons/icon_turnsignal_off.png";
-        rightTurnSignalSource = turnRight ? "qrc:/icons/icon_turnsignal_on.png"
-                                          : "qrc:/icons/icon_turnsignal_off.png";
+//        leftTurnSignalSource = turnLeft ? "qrc:/icons/icon_turnsignal_on.png"
+//                                        : "qrc:/icons/icon_turnsignal_off.png";
+//        rightTurnSignalSource = turnRight ? "qrc:/icons/icon_turnsignal_on.png"
+//                                          : "qrc:/icons/icon_turnsignal_off.png";
     }
 
     Timer {
@@ -111,10 +111,10 @@ OverlayContainerForm {
             flashing = !flashing
             var turnLeft = (flashing && (turnSignal & Qt.LeftArrow));
             var turnRight = (flashing && (turnSignal & Qt.RightArrow));
-            leftTurnSignalSource = turnLeft ? "qrc:/icons/icon_turnsignal_on.png"
-                                            : "qrc:/icons/icon_turnsignal_off.png";
-            rightTurnSignalSource = turnRight ? "qrc:/icons/icon_turnsignal_on.png"
-                                              : "qrc:/icons/icon_turnsignal_off.png";
+//            leftTurnSignalSource = turnLeft ? "qrc:/icons/icon_turnsignal_on.png"
+//                                            : "qrc:/icons/icon_turnsignal_off.png";
+//            rightTurnSignalSource = turnRight ? "qrc:/icons/icon_turnsignal_on.png"
+//                                              : "qrc:/icons/icon_turnsignal_off.png";
         }
     }
 
