@@ -2,6 +2,7 @@
 
 #include <QObject>
 #include <QDebug>
+#include <mutex>
 
 class Speed : public QObject
 {
@@ -23,6 +24,6 @@ signals:
     void speedValueChanged();
 
 private:
-    int speedValue;
-
+    int speedValue = 0;
+    std::mutex m;
 };
