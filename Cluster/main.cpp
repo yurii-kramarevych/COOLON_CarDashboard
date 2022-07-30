@@ -56,6 +56,8 @@
 
 #include "fps.h"
 #include "speed.h"
+#include "rpm.h"
+#include "signal.h"
 
 int main(int argc, char *argv[])
 {
@@ -68,6 +70,8 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<FPS>("FPS", 1, 0, "FPS");
     qmlRegisterType<Speed>("SPEED", 1, 0, "SPEED");
+    qmlRegisterType<Rpm>("RPM", 1, 0, "RPM");
+    qmlRegisterType<Signal>("SIGNAL", 1, 0, "SIGNAL");
 
     QQuickView viewer;
 
